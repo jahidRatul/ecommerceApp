@@ -31,6 +31,13 @@ dependencies:
   flutter_rating_bar: ^4.0.0
   carousel_slider: ^4.0.0
   convex_bottom_bar: ^3.0.0
+  dio: ^4.0.1
+  http: ^0.13.4
+  fluttertoast: ^8.0.8
+  get_storage: ^2.0.3
+  get: ^4.3.8
+  flutter_easyloading: ^3.0.3
+  flutter_html: ^2.2.1
 
 dev_dependencies:
   flutter_test:

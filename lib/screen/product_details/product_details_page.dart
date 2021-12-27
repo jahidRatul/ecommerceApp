@@ -1,16 +1,21 @@
+import 'package:ecommerce_app/core/model/CategoryProductListModel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ProductDetailsPage extends StatefulWidget {
+  final Products? selectedProduct;
+  ProductDetailsPage({this.selectedProduct});
   @override
   _ProductDetailsPageState createState() => _ProductDetailsPageState();
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
+  int quantity = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -35,7 +40,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Mans Shirt with black stripe",
+                    widget?.selectedProduct?.name ?? '',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                   ),
                   SizedBox(
@@ -46,7 +51,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       Row(
                         children: [
                           Text(
-                            "(3.6)",
+                            "(0.0)",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 30),
                           ),
@@ -75,7 +80,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       ),
                       Spacer(),
                       Text(
-                        "Price: \$132",
+                        "Price: \৳${widget?.selectedProduct?.price ?? ''}",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 24),
                       ),
@@ -90,28 +95,46 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                            Icon(
-                              Icons.remove,
-                              size: 30,
-                              color: Colors.grey.shade700,
+                            IconButton(
+                              icon: Icon(
+                                Icons.remove,
+                                size: 30,
+                                color: Colors.grey.shade700,
+                              ),
+                              // padding: EdgeInsets.zero,
+                              constraints: BoxConstraints(),
+                              onPressed: () {
+                                setState(() {
+                                  quantity = quantity - 1;
+                                });
+                              },
                             ),
                             Container(
+                              width: 60,
                               color: Colors.grey.shade200,
                               padding: EdgeInsets.only(right: 10, left: 10),
-                              margin:
-                                  const EdgeInsets.only(right: 20, left: 20),
                               child: Text(
-                                "1",
+                                "$quantity",
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 24),
                               ),
                             ),
-                            Icon(
-                              Icons.add,
-                              size: 30,
-                              color: Colors.grey.shade700,
+                            IconButton(
+                              icon: Icon(
+                                Icons.add,
+                                size: 30,
+                                color: Colors.grey.shade700,
+                              ),
+                              constraints: BoxConstraints(),
+                              // padding: EdgeInsets.zero,
+                              onPressed: () {
+                                setState(() {
+                                  quantity = quantity + 1;
+                                });
+                              },
                             )
                           ],
                         ),
@@ -153,19 +176,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   SizedBox(
                     height: 30,
                   ),
-                  Text(
-                    "Item Description",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  Html(
+                    data: widget?.selectedProduct?.details ?? '',
+                    style: {
+                      "body": Style(textAlign: TextAlign.center),
+                      "div": Style(textAlign: TextAlign.center),
+                    },
                   ),
                   SizedBox(
                     height: 10,
-                  ),
-                  Text(
-                    "Rise and shine again! Recently working on a E-commerce app. Here are some early life mockups of this project . Basically products are shown on homepage based on people's gender. You can try quick search in order to get the desired product in real short time. Filter the result's to get even more accurate search result. Can find out the top stylist of the week and find their creations. Follow them to get update of their fashion works. Rest of the flow is pretty simple. Simply get more details about the product by tapping on them. And add them to your basket to checkout from the platform.",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize: 16,
-                        color: Colors.grey),
                   ),
                 ],
               ),
