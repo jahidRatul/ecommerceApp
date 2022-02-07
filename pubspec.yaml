@@ -38,6 +38,7 @@ dependencies:
   get: ^4.3.8
   flutter_easyloading: ^3.0.3
   flutter_html: ^2.2.1
+  connectivity_plus: ^2.0.3
 
 dev_dependencies:
   flutter_test:

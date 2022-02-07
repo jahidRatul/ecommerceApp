@@ -76,7 +76,7 @@ class _DashboardState extends State<Dashboard> {
             GetBuilder<CategoryListViewModel>(
               builder: (categoryController) => ListView.builder(
                   itemCount:
-                      categoryController?.categoryListModel?.category?.length ??
+                      categoryController.categoryListModel.category?.length ??
                           0,
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
@@ -94,8 +94,8 @@ class _DashboardState extends State<Dashboard> {
                             width: 10,
                           ),
                           Expanded(
-                            child: Text(categoryController?.categoryListModel
-                                    ?.category![index]?.name ??
+                            child: Text(categoryController
+                                    .categoryListModel.category![index].name ??
                                 ''),
                           ),
                         ],
@@ -104,8 +104,8 @@ class _DashboardState extends State<Dashboard> {
                         // Text("children 1"),
                         // Text("children 2"),
                         ListView.builder(
-                            itemCount: categoryController?.categoryListModel
-                                    ?.category![index]?.subs?.length ??
+                            itemCount: categoryController.categoryListModel
+                                    .category![index].subs?.length ??
                                 0,
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
@@ -116,10 +116,10 @@ class _DashboardState extends State<Dashboard> {
                                   children: [
                                     Expanded(
                                       child: Text(categoryController
-                                              ?.categoryListModel
-                                              ?.category![index]
-                                              ?.subs![index1]
-                                              ?.name ??
+                                              .categoryListModel
+                                              .category![index]
+                                              .subs![index1]
+                                              .name ??
                                           ''),
                                     ),
                                   ],
@@ -127,10 +127,10 @@ class _DashboardState extends State<Dashboard> {
                                 children: <Widget>[
                                   ListView.builder(
                                       itemCount: categoryController
-                                              ?.categoryListModel
-                                              ?.category![index]
-                                              ?.subs![index1]
-                                              ?.childs
+                                              .categoryListModel
+                                              .category![index]
+                                              .subs![index1]
+                                              .childs
                                               ?.length ??
                                           0,
                                       shrinkWrap: true,
@@ -141,11 +141,11 @@ class _DashboardState extends State<Dashboard> {
                                             children: [
                                               Expanded(
                                                 child: Text(categoryController
-                                                        ?.categoryListModel
-                                                        ?.category![index]
-                                                        ?.subs![index1]
-                                                        ?.childs![index2]
-                                                        ?.name ??
+                                                        .categoryListModel
+                                                        .category![index]
+                                                        .subs![index1]
+                                                        .childs![index2]
+                                                        .name ??
                                                     ''),
                                               ),
                                             ],

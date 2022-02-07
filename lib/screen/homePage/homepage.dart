@@ -46,18 +46,18 @@ class _HomepageState extends State<Homepage> {
                         childAspectRatio: 3 / 4,
                         crossAxisSpacing: 3,
                         mainAxisSpacing: 0),
-                    itemCount: categoryController
-                            ?.categoryListModel?.category?.length ??
-                        0,
+                    itemCount:
+                        categoryController.categoryListModel.category?.length ??
+                            0,
                     itemBuilder: (BuildContext ctx, index) {
                       return GestureDetector(
                         onTap: () async {
                           await categoryProductListViewModelBindInit
                               .getCategoryProductList(
                                   categoryProductsUrl: categoryController
-                                          ?.categoryListModel
-                                          ?.category![index]
-                                          ?.url ??
+                                          .categoryListModel
+                                          .category![index]
+                                          .url ??
                                       '');
                           Navigator.push(
                               context,
@@ -86,8 +86,8 @@ class _HomepageState extends State<Homepage> {
                             ),
                             Expanded(
                               child: Text(
-                                categoryController?.categoryListModel
-                                        ?.category![index]?.name ??
+                                categoryController.categoryListModel
+                                        .category![index].name ??
                                     '',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(

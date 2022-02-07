@@ -29,7 +29,7 @@ class _CategoryProductListPageState extends State<CategoryProductListPage> {
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: catProductController
-                            ?.categoryProductListModel?.products?.length ??
+                            .categoryProductListModel.products?.length ??
                         0,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
@@ -44,8 +44,8 @@ class _CategoryProductListPageState extends State<CategoryProductListPage> {
                               MaterialPageRoute(
                                   builder: (context) => ProductDetailsPage(
                                         selectedProduct: catProductController
-                                            ?.categoryProductListModel
-                                            ?.products![index],
+                                            .categoryProductListModel
+                                            .products![index],
                                       )));
                         },
                         child: Card(
@@ -78,8 +78,8 @@ class _CategoryProductListPageState extends State<CategoryProductListPage> {
                                   height: 5,
                                 ),
                                 Text(
-                                  catProductController?.categoryProductListModel
-                                          ?.products![index]?.name ??
+                                  catProductController.categoryProductListModel
+                                          .products![index].name ??
                                       '',
                                   overflow: TextOverflow.fade,
                                 ),
@@ -90,7 +90,7 @@ class _CategoryProductListPageState extends State<CategoryProductListPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "${catProductController?.categoryProductListModel?.products![index]?.price ?? 0}\৳",
+                                      "${catProductController.categoryProductListModel.products![index].price ?? 0}\৳",
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold),
@@ -99,7 +99,7 @@ class _CategoryProductListPageState extends State<CategoryProductListPage> {
                                       width: 20,
                                     ),
                                     Text(
-                                      "${catProductController?.categoryProductListModel?.products![index]?.previousPrice ?? 0}\৳",
+                                      "${catProductController.categoryProductListModel.products![index].previousPrice ?? 0}\৳",
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,

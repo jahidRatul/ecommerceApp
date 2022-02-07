@@ -1,14 +1,18 @@
-import 'package:ecommerce_app/screen/dashboard/dashboard.dart';
+import 'package:ecommerce_app/core/view_bindings/initial_bindings.dart';
+import 'package:ecommerce_app/screen/login_page/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
 import 'core/constant/storage_constant/storage_constant.dart';
-import 'core/view_bindings/initial_bindings.dart';
 
 void main() async {
+  await GetStorage.init();
+  await GetStorage.init(StorageConstant.authStorage);
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(MyApp());
   configLoading();
 }
@@ -34,8 +38,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'EcommerceApp',
-      home: Dashboard(),
+      home: LoginPage(),
       debugShowCheckedModeBanner: false,
+      initialBinding: InitialBindings(),
       builder: EasyLoading.init(),
     );
   }

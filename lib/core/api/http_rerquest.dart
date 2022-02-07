@@ -20,7 +20,7 @@ class HttpHelper {
         headers: headers,
       );
       print("response body ::");
-      print(response?.statusCode);
+      print(response.statusCode);
       print(response.body);
 
       String s = String.fromCharCodes(response.bodyBytes);
@@ -42,7 +42,7 @@ class HttpHelper {
     Map<String, String> defaultHeaders = new Map();
     defaultHeaders['Content-Type'] = "application/json";
     defaultHeaders['Accept'] = "application/json";
-    if (headers != null) defaultHeaders?.addAll(headers);
+    if (headers != null) defaultHeaders.addAll(headers);
 
     String? bodyString = body != null ? json.encode(body) : null;
     try {
@@ -56,7 +56,7 @@ class HttpHelper {
       String s = String.fromCharCodes(response.bodyBytes);
       print(url);
       print("response body ::");
-      print(response?.statusCode);
+      print(response.statusCode);
       print(s);
 
       return json.decode(s);
@@ -87,19 +87,18 @@ class HttpHelper {
       if (avater != null)
         body['img'] = await MultipartFile.fromFile(
           avater.path,
-          filename: avater?.path?.split('/')?.last,
-          contentType: MediaType('image', '${avater?.path?.split('.')?.last}'),
+          filename: avater.path.split('/').last,
+          contentType: MediaType('image', '${avater.path.split('.').last}'),
         );
 
       if (signature != null)
         body['signature'] = await MultipartFile.fromFile(
           signature.path,
-          filename: signature?.path?.split('/')?.last,
-          contentType:
-              MediaType('image', '${signature?.path?.split('.')?.last}'),
+          filename: signature.path.split('/').last,
+          contentType: MediaType('image', '${signature.path.split('.').last}'),
         );
 
-      FormData formData = FormData.fromMap(body ?? {});
+      FormData formData = FormData.fromMap(body);
       response = await dio.post(url, data: formData);
       print("${response.data}");
       return response.data;

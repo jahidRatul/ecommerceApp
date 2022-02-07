@@ -40,7 +40,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget?.selectedProduct?.name ?? '',
+                    widget.selectedProduct?.name ?? '',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                   ),
                   SizedBox(
@@ -80,7 +80,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       ),
                       Spacer(),
                       Text(
-                        "Price: \৳${widget?.selectedProduct?.price ?? ''}",
+                        "Price: \৳${widget.selectedProduct?.price ?? ''}",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 24),
                       ),
@@ -177,7 +177,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     height: 30,
                   ),
                   Html(
-                    data: widget?.selectedProduct?.details ?? '',
+                    data: widget.selectedProduct?.details ?? '',
                     style: {
                       "body": Style(textAlign: TextAlign.center),
                       "div": Style(textAlign: TextAlign.center),
