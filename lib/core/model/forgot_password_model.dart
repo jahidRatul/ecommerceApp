@@ -1,22 +1,20 @@
 import 'package:ecommerce_app/core/api/app_urls.dart';
 import 'package:ecommerce_app/core/api/http_rerquest.dart';
 
-class LoginUserModel {
-  String? token;
-  String? name;
-  String? error;
+class ForgotPasswordModel {
+  String? success;
+  String? errors;
 
-  LoginUserModel({this.token, this.name});
+  ForgotPasswordModel({this.success, this.errors});
 
-  LoginUserModel.fromJson(Map<String, dynamic> json) {
+  ForgotPasswordModel.fromJson(Map<String, dynamic> json) {
     this._fromJson(json);
   }
 
   _fromJson(Map<String, dynamic> json) {
     try {
-      token = json['token'];
-      name = json['name'];
-      error = json['error'];
+      success = json['success'];
+      errors = json['errors'];
     } catch (e, t) {
       print(e);
       print(t);
@@ -25,29 +23,24 @@ class LoginUserModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['token'] = this.token;
-    data['name'] = this.name;
-    data['error'] = this.error;
+    data['success'] = this.success;
+    data['errors'] = this.errors;
+
     return data;
   }
 
   Future<void> callApi({
     String? phone,
-    String? password,
   }) async {
     try {
       Map<String, dynamic>? res = await HttpHelper.post(
-        AppUrls.loginUserUrl,
+        AppUrls.forgetPasswordUserUrl,
         headers: {
           'Content-Type': 'application/json;charset=UTF-8',
           'Charset': 'utf-8'
         },
-        body: {
-          "phone": phone,
-          "password": password,
-        },
+        body: {"phone": phone},
       );
-
       if (res == null) return;
       if (res.isEmpty) return;
       return this._fromJson(res);

@@ -18,12 +18,11 @@ class AppValidTor {
 
   static String? isMobile(String s) {
     if (s.isBlank! || s.isEmpty) return "this field required!";
-    return checkMobileNo(s) ? null : "Enter a valid mobile no";
+    return checkMobileNo(s) ? null : "The phone must be 11 digits.";
   }
 
 // Custom regExpr for bd no with 88, 01
-  static bool checkMobileNo(String s) =>
-      hasMatch(s, r'^(?:\+?88)?01[13-9]\d{8}$');
+  static bool checkMobileNo(String s) => hasMatch(s, r'^\d{11}$');
 
   static bool hasMatch(String? value, String pattern) {
     return (value == null) ? false : RegExp(pattern).hasMatch(value);
